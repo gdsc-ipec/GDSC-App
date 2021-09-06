@@ -1,19 +1,33 @@
 import 'package:flutter/material.dart';
-
-void main() {
+import 'utils/routes.dart';
+import 'widgets/home_page.dart';
+// import 'package:google_fonts/google_fonts.dart';
+void main(){
   runApp(MyApp());
 }
-
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      //home: HomePage(),
+      themeMode: ThemeMode.light,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
+        //fontFamily: GoogleFonts.lato().fontFamily,
+        // primaryTextTheme : GoogleFonts.latoTextTheme()
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        //primarySwatch: Colors.blueGrey,
+      ),
+      initialRoute: MyRoutes.homeRoute,
+      routes: {
+        //"/" : (context)=>HomePage(),
+        MyRoutes.homeRoute :(context)=>HomePage(),
+        // "/" is the default route(home)
+        //MyRoutes.loginRoute: (context)=>LoginPage()
+      },
     );
   }
 }
